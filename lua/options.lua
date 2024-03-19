@@ -17,6 +17,12 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 vim.opt.termguicolors = true
 
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
+vim.opt.smartindent = true
+
 -- Don't show the mode, since it's already in the status line
 vim.opt.showmode = false
 
@@ -62,6 +68,6 @@ vim.opt.inccommand = 'split'
 vim.opt.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
-vim.opt.scrolloff = 10
+vim.opt.scrolloff = 8
 
 -- vim: ts=2 sts=2 sw=2 et

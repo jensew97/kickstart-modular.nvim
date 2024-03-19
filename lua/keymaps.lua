@@ -54,6 +54,12 @@ vim.keymap.set('n', '<F4>', '<cmd> ClangdSwitchSourceHeader<CR>', { desc = 'Swit
 -- Zenmode
 vim.keymap.set('n', '<leader>z', '<cmd> ZenMode<CR>', { desc = 'Toggle [Z]enmode' })
 
+-- Undotree
+vim.keymap.set('n', '<leader>u', '<cmd> UndotreeToggle <CR>', { desc = 'Toggle undotree' })
+
+-- Fugitive
+vim.keymap.set('n', '<leader>gs', '<cmd> Git<CR>', { desc = 'Git status fugitive' })
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
