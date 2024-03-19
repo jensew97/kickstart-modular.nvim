@@ -19,26 +19,44 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 -- or just use <C-\><C-n> to exit terminal mode
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
--- TIP: Disable arrow keys in normal mode
--- vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
--- vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
--- vim.keymap.set('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
--- vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
-
 -- Keybinds to make split navigation easier.
---  Use CTRL+<hjkl> to switch between windows
---
 --  See `:help wincmd` for a list of all window commands
-vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
-vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
-vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
-vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+-- Tmux navigation for navigating between vim and tmux panes
+vim.keymap.set('n', '<C-h>', '<cmd> TmuxNavigateLeft<CR>', { desc = 'Move focus to the left window' })
+vim.keymap.set('n', '<C-l>', '<cmd> TmuxNavigateRight<CR>', { desc = 'Move focus to the right window' })
+vim.keymap.set('n', '<C-j>', '<cmd> TmuxNavigateDown<CR>', { desc = 'Move focus to the lower window' })
+vim.keymap.set('n', '<C-k>', '<cmd> TmuxNavigateUp<CR>', { desc = 'Move focus to the upper window' })
+
+vim.keymap.set('v', '<S-j>', ":m '>+1<CR>gv=gv", { desc = 'Move highlighted lines up' })
+vim.keymap.set('v', '<S-k>', ":m '<-2<CR>gv=gv", { desc = 'Move highlighted lines down' })
+
+vim.keymap.set('n', '<C-s>', '<cmd>w<CR>', { desc = 'File Save' })
+
+vim.keymap.set('n', '<S-j>', 'mzJ`z"', { desc = 'Copy line below to the end of current' })
+vim.keymap.set('n', '<C-d>', '<C-d>zz', { desc = 'Keep cursor centered when moving page up' })
+vim.keymap.set('n', '<C-u>', '<C-u>zz', { desc = 'Keep cursor centered when moving page down' })
+vim.keymap.set('n', 'n', 'nzzzv', { desc = 'Center while moving search' })
+vim.keymap.set('n', 'N', 'Nzzzv', { desc = 'Center while moving prev search' })
+
+vim.keymap.set(
+  'n',
+  '<leader>æ',
+  "<cmd>!clang-format-mr --style=file --fallback-style=none -i $(git ls-files | grep -E '\\.(cpp|h|c|proto)$' | tr '\\n' ' ') <CR>",
+  { desc = 'Format with clang-format-mr' }
+)
+
+-- Neotree
+vim.keymap.set('n', '<C-n>', '<cmd>Neotree toggle<CR>', { desc = 'Neotree Toggle window' })
+
+-- Clangd
+vim.keymap.set('n', '<F4>', '<cmd> ClangdSwitchSourceHeader<CR>', { desc = 'Switch header file (cpp/h)' })
+
+-- Zenmode
+vim.keymap.set('n', '<leader>z', '<cmd> ZenMode<CR>', { desc = 'Toggle [Z]enmode' })
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
--- Highlight when yanking (copying) text
---  Try it with `yap` in normal mode
 --  See `:help vim.highlight.on_yank()`
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
@@ -47,5 +65,3 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     vim.highlight.on_yank()
   end,
 })
-
--- vim: ts=2 sts=2 sw=2 et
