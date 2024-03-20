@@ -45,6 +45,8 @@ vim.keymap.set(
   { desc = 'Format with clang-format-mr' }
 )
 
+vim.keymap.set('v', '<leader>/', "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>", { desc = 'Comment Toggle' })
+
 -- Neotree
 vim.keymap.set('n', '<C-n>', '<cmd>Neotree toggle<CR>', { desc = 'Neotree Toggle window' })
 
@@ -58,8 +60,10 @@ vim.keymap.set('n', '<leader>z', '<cmd> ZenMode<CR>', { desc = 'Toggle [Z]enmode
 vim.keymap.set('n', '<leader>u', '<cmd> UndotreeToggle <CR>', { desc = 'Toggle undotree' })
 
 -- Fugitive
-vim.keymap.set('n', '<leader>gs', '<cmd> Git<CR>', { desc = 'Git status fugitive' })
+-- vim.keymap.set('n', '<leader>gs', '<cmd> Git<CR>', { desc = 'Git status fugitive' })
 
+-- Neogit
+vim.keymap.set('n', '<leader>gs', '<cmd> Neogit kind=split<CR>', { desc = 'Neogit toggle' })
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
