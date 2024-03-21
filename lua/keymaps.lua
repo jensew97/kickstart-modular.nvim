@@ -38,6 +38,8 @@ vim.keymap.set('n', '<C-u>', '<C-u>zz', { desc = 'Keep cursor centered when movi
 vim.keymap.set('n', 'n', 'nzzzv', { desc = 'Center while moving search' })
 vim.keymap.set('n', 'N', 'Nzzzv', { desc = 'Center while moving prev search' })
 
+vim.keymap.set('x', 'p', '"_dP', { desc = "Don't overwrite clipboard when pasting" })
+
 vim.keymap.set(
   'n',
   '<leader>æ',
@@ -75,3 +77,13 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     vim.highlight.on_yank()
   end,
 })
+
+vim.cmd 'autocmd User TelescopePreviewerLoaded setlocal number'
+-- TODO: fix this and remove line above
+-- vim.api.nvim_create_autocmd('User', {
+--  desc = 'Telescope preview linenumber',
+--  group = vim.api.nvim_create_augroup('telescope-preview-linenumber', { clear = true }),
+--  callback = function()
+--    vim.opt_local.number = true
+--  end,
+-- })

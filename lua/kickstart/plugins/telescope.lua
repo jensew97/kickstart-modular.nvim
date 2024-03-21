@@ -56,11 +56,40 @@ return {
         -- You can put your default mappings / updates / etc. in here
         --  All the info you're looking for is in `:help telescope.setup()`
         --
-        -- defaults = {
-        --   mappings = {
-        --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
-        --   },
-        -- },
+        defaults = {
+          -- mappings = {
+          --   i = { ['<c-enter>'] = 'to_fuzzy_refine' },
+          -- },
+          vimgrep_arguments = {
+            'rg',
+            '-L',
+            '--color=never',
+            '--no-heading',
+            '--with-filename',
+            '--line-number',
+            '--column',
+            '--smart-case',
+          },
+          prompt_prefix = '   ',
+          selection_caret = '  ',
+          entry_prefix = '  ',
+          initial_mode = 'insert',
+          selection_strategy = 'reset',
+          sorting_strategy = 'ascending',
+          layout_strategy = 'horizontal',
+          layout_config = {
+            horizontal = {
+              prompt_position = 'top',
+              preview_width = 0.55,
+            },
+            vertical = {
+              mirror = false,
+            },
+            width = 0.87,
+            height = 0.80,
+            preview_cutoff = 120,
+          },
+        },
         -- pickers = {}
         extensions = {
           ['ui-select'] = {
