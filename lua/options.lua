@@ -70,4 +70,10 @@ vim.opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 8
 
+-- nvim-ufo folds
+vim.o.foldcolumn = '0' -- '0' is not bad
+vim.o.foldenable = true
+vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
+vim.o.foldlevelstart = 99
+vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 -- vim: ts=2 sts=2 sw=2 et

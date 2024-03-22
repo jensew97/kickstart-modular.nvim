@@ -61,11 +61,9 @@ vim.keymap.set('n', '<leader>z', '<cmd> ZenMode<CR>', { desc = 'Toggle [Z]enmode
 -- Undotree
 vim.keymap.set('n', '<leader>u', '<cmd> UndotreeToggle <CR>', { desc = 'Toggle undotree' })
 
--- Fugitive
--- vim.keymap.set('n', '<leader>gs', '<cmd> Git<CR>', { desc = 'Git status fugitive' })
-
 -- Neogit
 vim.keymap.set('n', '<leader>gs', '<cmd> Neogit kind=split<CR>', { desc = 'Neogit toggle' })
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
