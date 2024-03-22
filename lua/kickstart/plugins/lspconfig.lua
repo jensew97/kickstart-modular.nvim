@@ -136,6 +136,7 @@ return {
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
         clangd = {},
+        -- qml_lsp = {},
         -- gopls = {},
         -- pyright = {},
         -- rust_analyzer = {},
@@ -163,6 +164,24 @@ return {
           },
         },
       }
+
+      -- Custom QML lsp config
+      local lspconfig = require 'lspconfig'
+      local configs = require 'lspconfig.configs'
+      if not configs.qmlls6 then
+        configs.qmlls6 = {
+          default_config = {
+            cmd = { '/home/jens/Qt/6.6.2/gcc_64/bin/qmlls' },
+            filetypes = { 'qml', 'qmljs' },
+            root_dir = function(fname)
+              return lspconfig.util.find_git_ancestor(fname)
+            end,
+            settings = {},
+          },
+        }
+      end
+
+      lspconfig.qmlls6.setup {}
 
       -- Ensure the servers and tools above are installed
       --  To check the current status of installed tools and/or manually install

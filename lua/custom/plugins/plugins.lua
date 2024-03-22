@@ -16,4 +16,6 @@ return {
     },
     config = true,
   },
+
+  -- { 'qt/qtdeclarative' },
 }
