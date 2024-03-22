@@ -171,7 +171,7 @@ return {
       if not configs.qmlls6 then
         configs.qmlls6 = {
           default_config = {
-            cmd = { '/home/jens/Qt/6.6.2/gcc_64/bin/qmlls' },
+            cmd = { os.getenv 'HOME' .. '/Qt/6.6.2/gcc_64/bin/qmlls' },
             filetypes = { 'qml', 'qmljs' },
             root_dir = function(fname)
               return lspconfig.util.find_git_ancestor(fname)
