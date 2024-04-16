@@ -7,6 +7,11 @@ return {
       window = {
         width = 140,
       },
+      plugins = {
+        options = {
+          laststatus = 3,
+        },
+      },
     },
   },
 

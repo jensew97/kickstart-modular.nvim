@@ -43,8 +43,8 @@ vim.keymap.set('x', 'p', '"_dP', { desc = "Don't overwrite clipboard when pastin
 vim.keymap.set(
   'n',
   '<leader>æ',
-  "<cmd>!clang-format-mr --style=file --fallback-style=none -i $(git ls-files | grep -E '\\.(cpp|h|c|proto)$' | tr '\\n' ' ') <CR>",
-  { desc = 'Format with clang-format-mr' }
+  "<cmd>!clang-format-mr --style=file --fallback-style=none -i $(git ls-files | grep -E '\\.(cpp|h|c|proto)$' | tr '\\n' ' '); qmlformat-mr --normalize --inplace --newline unix --force `git ls-files | grep -E '\\.qml$'` <CR>",
+  { desc = 'Format with clang-format-mr and qmlformat-mr' }
 )
 
 vim.keymap.set('v', '<leader>/', "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>", { desc = 'Comment Toggle' })
