@@ -40,6 +40,8 @@ vim.keymap.set('n', 'N', 'Nzzzv', { desc = 'Center while moving prev search' })
 
 vim.keymap.set('x', 'p', '"_dP', { desc = "Don't overwrite clipboard when pasting" })
 
+vim.keymap.set('n', '<leader>s', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+
 vim.keymap.set(
   'n',
   '<leader>æ',
