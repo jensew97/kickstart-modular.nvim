@@ -15,5 +15,11 @@ return {
     },
   },
 
+  { 'easymotion/vim-easymotion' },
+
+  { 'unblevable/quick-scope' },
+
   { 'mbbill/undotree' },
+
+  { 'tpope/vim-surround' },
 }

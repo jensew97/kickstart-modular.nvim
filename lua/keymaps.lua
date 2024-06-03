@@ -66,6 +66,11 @@ vim.keymap.set('n', '<leader>u', '<cmd> UndotreeToggle <CR>', { desc = 'Toggle u
 -- Neogit
 vim.keymap.set('n', '<leader>gs', '<cmd> Neogit kind=split<CR>', { desc = 'Neogit toggle' })
 
+-- Leap
+vim.keymap.set({ 'n', 'x', 'o' }, 's', '<Plug>(leap-forward)')
+vim.keymap.set({ 'n', 'x', 'o' }, 'S', '<Plug>(leap-backward)')
+vim.keymap.set({ 'n', 'x', 'o' }, 'gs', '<Plug>(leap-from-window)')
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
