@@ -22,4 +22,6 @@ return {
   { 'mbbill/undotree' },
 
   { 'tpope/vim-surround' },
+
+  { 'tpope/vim-abolish' },
 }
