@@ -26,7 +26,7 @@ vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 vim.opt.smartindent = true
 
-vim.opt.wrap = false
+vim.opt.wrap = true
 
 -- Don't show the mode, since it's already in the status line
 vim.opt.showmode = false
@@ -75,10 +75,24 @@ vim.opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 8
 
+-- Tressitter folding
+vim.opt.foldmethod = "expr"
+
+-- :h vim.treesitter.foldexpr()
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+
+-- ref: https://github.com/neovim/neovim/pull/20750
+vim.opt.foldtext = ""
+vim.opt.fillchars:append("fold: ")
+
+-- Open all folds by default, zm is not available
+vim.opt.foldlevelstart = 99
+----------------------------------
+
 -- nvim-ufo folds
-vim.o.foldcolumn = '0' -- '0' is not bad
-vim.o.foldenable = true
-vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
-vim.o.foldlevelstart = 99
-vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
+-- vim.o.foldcolumn = '0' -- '0' is not bad
+-- vim.o.foldenable = true
+-- vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
+-- vim.o.foldlevelstart = 99
+-- vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 -- vim: ts=2 sts=2 sw=2 et

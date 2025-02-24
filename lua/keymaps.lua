@@ -40,7 +40,7 @@ vim.keymap.set('n', 'N', 'Nzzzv', { desc = 'Center while moving prev search' })
 
 vim.keymap.set('x', 'p', '"_dP', { desc = "Don't overwrite clipboard when pasting" })
 
-vim.keymap.set('n', '<leader>s', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+vim.keymap.set('n', '<leader>ra', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 vim.keymap.set(
   'n',
@@ -52,7 +52,8 @@ vim.keymap.set(
 vim.keymap.set('v', '<leader>/', "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>", { desc = 'Comment Toggle' })
 
 -- Neotree
-vim.keymap.set('n', '<C-n>', '<cmd>Neotree toggle<CR>', { desc = 'Neotree Toggle window' })
+vim.keymap.set('n', '<C-n>', '<cmd>Neotree toggle filesystem<CR>', { desc = 'Neotree Toggle window' })
+vim.keymap.set('n', '<leader>rf', '<cmd>Neotree filesystem reveal<CR>', { desc = 'Neotree [R]eveal Current [F]ile' })
 
 -- Clangd
 vim.keymap.set('n', '<F4>', '<cmd> ClangdSwitchSourceHeader<CR>', { desc = 'Switch header file (cpp/h)' })
@@ -64,12 +65,17 @@ vim.keymap.set('n', '<leader>z', '<cmd> ZenMode<CR>', { desc = 'Toggle [Z]enmode
 vim.keymap.set('n', '<leader>u', '<cmd> UndotreeToggle <CR>', { desc = 'Toggle undotree' })
 
 -- Neogit
-vim.keymap.set('n', '<leader>gs', '<cmd> Neogit kind=split<CR>', { desc = 'Neogit toggle' })
+vim.keymap.set('n', '<leader>gs', '<cmd> Neogit kind=floating<CR>', { desc = 'Neogit toggle' })
 
 -- Leap
 vim.keymap.set({ 'n', 'x', 'o' }, 's', '<Plug>(leap-forward)')
 vim.keymap.set({ 'n', 'x', 'o' }, 'S', '<Plug>(leap-backward)')
 vim.keymap.set({ 'n', 'x', 'o' }, 'gs', '<Plug>(leap-from-window)')
+
+-- Gitsigns
+vim.keymap.set('n', '<leader>gb', '<cmd> Gitsigns blame_line <CR>', { desc = 'Blame current line'})
+vim.keymap.set('n', '<leader>gB', '<cmd> Gitsigns blame <CR>', { desc = 'Blame current buffer'})
+vim.keymap.set('n', '<leader>tb', '<cmd> Gitsigns toggle_current_line_blame <CR>', { desc = 'Toggle current line blame'})
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
