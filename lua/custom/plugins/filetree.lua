@@ -16,27 +16,27 @@ return {
           -- leave_dirs_open = false, -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
         },
       },
-      event_handlers = {{
-          event = "neo_tree_buffer_enter",
-          handler = function(arg)
-            vim.cmd [[
+      event_handlers = { {
+        event = "neo_tree_buffer_enter",
+        handler = function(arg)
+          vim.cmd [[
               setlocal relativenumber
             ]]
-          end,
-        }},
+        end,
+      } },
       window = {
-        width = 143, -- Work setup
-        -- width = 60, -- Home setup
+        -- width = 143, -- Work setup
+        width = 60, -- Home setup
       },
       default_component_configs = {
         file_size = {
-          enabled = false;
+          enabled = false,
         },
         last_modified = {
-          enabled = false;
+          enabled = false,
         },
         type = {
-          enabled = false;
+          enabled = false,
         },
         modified = {
           enabled = false

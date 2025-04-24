@@ -8,6 +8,13 @@ return {
         section_separators = '',
       },
       sections = {
+        lualine_c = {
+          {
+            'filename',
+            file_status = true, -- Displays file status (readonly status, modified status)
+            path = 3,
+          }
+        },
         lualine_x = {
           {
             require('noice').api.statusline.mode.get,

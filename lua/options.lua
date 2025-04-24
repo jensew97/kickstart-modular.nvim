@@ -14,6 +14,7 @@ vim.opt.relativenumber = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = 'a'
+vim.opt.mousemodel = 'extend'
 
 -- NvimTree setup
 vim.g.loaded_netrw = 1
