@@ -26,6 +26,11 @@ vim.keymap.set('n', '<C-h>', '<cmd> TmuxNavigateLeft<CR>', { desc = 'Move focus 
 vim.keymap.set('n', '<C-l>', '<cmd> TmuxNavigateRight<CR>', { desc = 'Move focus to the right window' })
 vim.keymap.set('n', '<C-j>', '<cmd> TmuxNavigateDown<CR>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<cmd> TmuxNavigateUp<CR>', { desc = 'Move focus to the upper window' })
+
+--  not working
+vim.keymap.set('i', '<C-l>', '<cmd> Tabout<CR>', { desc = 'Jump out of current bracket context' })
+vim.keymap.set('i', '<C-h>', '<cmd> TaboutBack<CR>', { desc = 'Jump out of current bracket context' })
+
 vim.keymap.set('v', '<S-j>', ":m '>+1<CR>gv=gv", { desc = 'Move highlighted lines up' })
 vim.keymap.set('v', '<S-k>', ":m '<-2<CR>gv=gv", { desc = 'Move highlighted lines down' })
 
@@ -38,6 +43,8 @@ vim.keymap.set('n', 'n', 'nzzzv', { desc = 'Center while moving search' })
 vim.keymap.set('n', 'N', 'Nzzzv', { desc = 'Center while moving prev search' })
 
 vim.keymap.set('x', 'p', '"_dP', { desc = "Don't overwrite clipboard when pasting" })
+
+vim.keymap.set('n', '<S-q><S-a>', '<cmd> :qa<CR>', { desc = "Quit vim (qa)" })
 
 vim.keymap.set('n', '<leader>ra', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "[R]eplace [A]ll" })
 
@@ -111,3 +118,25 @@ vim.api.nvim_create_user_command('DiagnosticToggle', function()
     signs = not vt,
   }
 end, { desc = 'toggle diagnostic' })
+
+-- Do not go to the start of the yanked buffer
+local yank_cursor_pos = nil
+
+vim.keymap.set({ 'n', 'x' }, 'y', function()
+  yank_cursor_pos = vim.api.nvim_win_get_cursor(0)
+  return 'y'
+end, { expr = true, desc = 'Yank without moving cursor' })
+
+vim.keymap.set('n', 'Y', function()
+  yank_cursor_pos = vim.api.nvim_win_get_cursor(0)
+  return 'y$'
+end, { expr = true, desc = 'Yank line without moving cursor' })
+
+vim.api.nvim_create_autocmd('TextYankPost', {
+  callback = function()
+    if yank_cursor_pos ~= nil then
+      vim.api.nvim_win_set_cursor(0, yank_cursor_pos)
+      yank_cursor_pos = nil
+    end
+  end,
+})
