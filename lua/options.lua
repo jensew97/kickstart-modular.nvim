@@ -88,6 +88,8 @@ vim.opt.fillchars:append("fold: ")
 
 -- Open all folds by default, zm is not available
 vim.opt.foldlevelstart = 99
+
+vim.g.tmux_navigator_no_wrap = 1
 ----------------------------------
 
 -- nvim-ufo folds
