@@ -4,6 +4,7 @@
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 vim.opt.hlsearch = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
+vim.keymap.set('n', '<C-c>', '<cmd>nohlsearch<CR>')
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
@@ -28,8 +29,8 @@ vim.keymap.set('n', '<C-j>', '<cmd> TmuxNavigateDown<CR>', { desc = 'Move focus 
 vim.keymap.set('n', '<C-k>', '<cmd> TmuxNavigateUp<CR>', { desc = 'Move focus to the upper window' })
 
 --  not working
-vim.keymap.set('i', '<C-l>', '<cmd> Tabout<CR>', { desc = 'Jump out of current bracket context' })
-vim.keymap.set('i', '<C-h>', '<cmd> TaboutBack<CR>', { desc = 'Jump out of current bracket context' })
+-- vim.keymap.set('i', '<C-l>', '<cmd> Tabout<CR>', { desc = 'Jump out of current bracket context' })
+-- vim.keymap.set('i', '<C-h>', '<cmd> TaboutBack<CR>', { desc = 'Jump out of current bracket context' })
 
 vim.keymap.set('v', '<S-j>', ":m '>+1<CR>gv=gv", { desc = 'Move highlighted lines up' })
 vim.keymap.set('v', '<S-k>', ":m '<-2<CR>gv=gv", { desc = 'Move highlighted lines down' })
@@ -63,7 +64,7 @@ vim.keymap.set('n', '<leader>n', '<cmd>Neotree toggle filesystem<CR>', { desc = 
 vim.keymap.set('n', '<leader>rf', '<cmd>Neotree filesystem reveal<CR>', { desc = 'Neotree [R]eveal Current [F]ile' })
 
 -- Clangd
-vim.keymap.set('n', '<F4>', '<cmd> ClangdSwitchSourceHeader<CR>', { desc = 'Switch header file (cpp/h)' })
+vim.keymap.set('n', '<F4>', '<cmd> LspClangdSwitchSourceHeader<CR>', { desc = 'Switch header file (cpp/h)' })
 
 -- Zenmode
 vim.keymap.set('n', '<leader>z', '<cmd> ZenMode<CR>', { desc = 'Toggle [Z]enmode' })

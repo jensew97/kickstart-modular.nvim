@@ -74,6 +74,9 @@ return {
           --  completions whenever it has completion options available.
           ['<C-Space>'] = cmp.mapping.complete {},
 
+          ['<Tab>'] = cmp.mapping(cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false }), { 'i' }),
+          ['<S-Tab>'] = cmp.mapping(cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Insert, select = false }), { 'i' }),
+
           -- Think of <c-l> as moving to the right of your snippet expansion.
           --  So if you have a snippet that's like:
           --  function $name($args)

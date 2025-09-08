@@ -25,8 +25,9 @@ return {
         end,
       } },
       window = {
+        position = "float",
         -- width = 143, -- Work setup
-        width = 60, -- Home setup
+        -- width = 60, -- Home setup
       },
       default_component_configs = {
         file_size = {
